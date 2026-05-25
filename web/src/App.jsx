@@ -643,12 +643,7 @@ export default function App() {
                   </span>
                 </div>
                 {view === 'table' ? (
-                  <>
-                    <PaperTable papers={filteredPapers} selectedId={selectedId} setSelectedId={setSelectedId} />
-                    <section className="board-preview">
-                      <Board categories={categories} papers={filteredPapers} selectedId={selectedId} setSelectedId={setSelectedId} />
-                    </section>
-                  </>
+                  <PaperTable papers={filteredPapers} selectedId={selectedId} setSelectedId={setSelectedId} />
                 ) : (
                   <Board categories={categories} papers={filteredPapers} selectedId={selectedId} setSelectedId={setSelectedId} />
                 )}

@@ -529,10 +529,6 @@ td:nth-child(7) {
   background: var(--blue-soft);
 }
 
-.board-preview {
-  margin-top: 28px;
-}
-
 .board-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
