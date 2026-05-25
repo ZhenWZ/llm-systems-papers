@@ -9,6 +9,7 @@ This repository is a Chinese-first paper library for LLM systems research. Keep 
 - `papers/*.md`: handwritten paper notes. This is the primary source for summaries and analysis.
 - `categories/*.md`: system-layer category indexes. Each paper must appear in the category page matching its primary `category`.
 - `web/`: React + Vite Notion Database-style dashboard. It reads `data/papers.yml` and renders full Markdown notes.
+- `skills/paper-analysis/SKILL.md`: default paper analysis skill for agents summarizing, adding, updating, or answering questions about papers.
 - `.github/workflows/pages.yml`: GitHub Pages workflow. It installs frontend dependencies, validates note format, builds the dashboard, and deploys Pages.
 - `CLAUDE.md`: Claude-compatible instruction entry point.
 - `AGNETS.md`: compatibility pointer for the earlier misspelled filename request.
@@ -20,6 +21,10 @@ This repository is a Chinese-first paper library for LLM systems research. Keep 
 - Keep system-layer category indexes under `categories/`.
 - Keep structured metadata in `data/papers.yml` when adding or changing paper entries.
 - Keep the dashboard as a read-only view over Markdown notes and YAML metadata. Do not duplicate paper summaries into frontend code.
+
+## Default Paper Analysis Skill
+
+When an agent is asked to summarize, analyze, add, revise, or answer questions about a paper, first load and follow `skills/paper-analysis/SKILL.md`. Treat it as the default workflow for paper analysis in this repository.
 
 ## Paper Note Standard
 

@@ -10,9 +10,14 @@ This repository is a Chinese-first LLM systems paper library. Paper summaries an
 - `data/papers.yml`: structured metadata consumed by the dashboard and validation script.
 - `papers/*.md`: primary paper notes and the source of long-form summaries.
 - `categories/*.md`: category-level reading indexes by system layer.
+- `skills/paper-analysis/SKILL.md`: default paper analysis workflow for adding, summarizing, revising, and answering questions about papers.
 - `web/`: read-only React + Vite dashboard for browsing metadata and rendering Markdown notes.
 - `.github/workflows/pages.yml`: GitHub Pages workflow with note validation and dashboard deployment.
 - `AGENTS.md`: full agent guidance. Prefer it when instructions conflict.
+
+## Default Skill
+
+For paper analysis tasks, first follow `skills/paper-analysis/SKILL.md`, then apply the repository rules below.
 
 ## Note Standard
 
