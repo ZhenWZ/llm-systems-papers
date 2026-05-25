@@ -1,0 +1,22 @@
+# Long-Context Attention & KV Cache
+
+这一类关注长上下文推理中的 attention complexity、prefill latency、decode bandwidth 和 KV cache footprint。重点是如何在保持 accuracy 的同时降低 attention 计算与 memory traffic。
+
+## 当前论文
+
+| 优先级 | 论文 | 阶段 | 核心问题 | 系统启发 | 笔记 |
+| --- | --- | --- | --- | --- | --- |
+| P0 | Stem: Rethinking Causal Information Flow in Sparse Attention | prefill | uniform top-k sparse attention 忽略 causal information flow，容易剪掉早期关键 token | sparse budget 应随 token position decay，selection metric 应引入 value/output awareness | [notes](../papers/2026-stem-sparse-attention.md) |
+| P1 | SALS: Sparse Attention in Latent Space for KV Cache Compression | decode | KV cache 低秩压缩受 RoPE 和 full reconstruction overhead 制约 | 在 latent space 做 token selection，只重建重要 token，把 low-rank compression 与 sparse attention 结合 | [notes](../papers/2025-sals-latent-kv-cache.md) |
+
+## 阅读重点
+
+- prefill 和 decode 的瓶颈不同：prefill 更偏 attention compute，decode 更偏 KV cache memory bandwidth。
+- sparse attention 的关键不是只降 sparsity，而是 token selection 是否保留 task-relevant context。
+- KV cache compression 需要同时考虑 footprint、reconstruction cost、RoPE 影响和 fused kernel 实现。
+
+## 后续可补充方向
+
+- MInference / FlexPrefill / XAttention / Quest / H2O / StreamingLLM。
+- KV cache quantization: KIVI 等。
+- Training-based sparse attention 与 post-training sparse attention。

@@ -1,0 +1,49 @@
+papers:
+  - id: coda-2026
+    title: "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs"
+    year: 2026
+    priority: P1
+    category: "Kernel & Operator Systems"
+    phase: training
+    links:
+      hugging_face: "https://huggingface.co/papers/2605.19269"
+      arxiv: "https://arxiv.org/abs/2605.19269"
+      code: "https://github.com/HanGuo97/coda-kernels"
+    note: "papers/2026-coda-gemm-epilogue.md"
+    tags:
+      - GEMM
+      - epilogue fusion
+      - CuTeDSL
+      - training kernels
+  - id: stem-2026
+    title: "Stem: Rethinking Causal Information Flow in Sparse Attention"
+    year: 2026
+    priority: P0
+    category: "Long-Context Attention & KV Cache"
+    phase: inference-prefill
+    links:
+      arxiv: "https://arxiv.org/abs/2603.06274"
+      code: "https://github.com/Tencent/AngelSlim/blob/main/angelslim/compressor/sparsity/stem/ops/stem_kernel.py"
+      kernel_library: "https://github.com/mit-han-lab/Block-Sparse-Attention"
+    note: "papers/2026-stem-sparse-attention.md"
+    tags:
+      - sparse attention
+      - causal information flow
+      - prefill
+      - block sparse kernel
+  - id: sals-2025
+    title: "SALS: Sparse Attention in Latent Space for KV Cache Compression"
+    year: 2025
+    priority: P1
+    category: "Long-Context Attention & KV Cache"
+    phase: inference-decode
+    links:
+      neurips: "https://proceedings.neurips.cc/paper_files/paper/2025/hash/00a0ebcad584c59dbc439c2af8793638-Abstract-Conference.html"
+      arxiv: "https://arxiv.org/abs/2510.24273"
+    note: "papers/2025-sals-latent-kv-cache.md"
+    tags:
+      - KV cache compression
+      - low-rank projection
+      - latent space
+      - RoPE
+      - sparse attention
