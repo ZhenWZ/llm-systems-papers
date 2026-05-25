@@ -2,6 +2,23 @@
 
 面向 LLM systems 的论文库。当前先收录 Notion database 中的 3 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
 
+## Frontend Dashboard
+
+Notion Database 风格前端看板位于 `web/`，GitHub Pages 部署后可通过以下入口访问：
+
+- Dashboard: https://zhenwz.github.io/llm-systems-papers/
+- Source: [web/](web/)
+
+本地开发：
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+构建时 `web/scripts/sync-content.mjs` 会把 `data/papers.yml` 和 `papers/*.md` 同步到静态资源目录。论文元数据仍维护在 `data/papers.yml`，论文详情仍以 Markdown 笔记为主。
+
 ## 分类导航
 
 | 系统层分类 | 关注问题 | 论文 |

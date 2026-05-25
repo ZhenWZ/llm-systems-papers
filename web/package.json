@@ -1,0 +1,23 @@
+{
+  "name": "llm-systems-papers-dashboard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/sync-content.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/sync-content.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "js-yaml": "^4.1.0",
+    "lucide-react": "^0.468.0",
+    "marked": "^15.0.6",
+    "vite": "^6.0.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {}
+}
