@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "validate:notes": "node scripts/validate-paper-notes.mjs",
     "predev": "node scripts/sync-content.mjs",
     "dev": "vite",
     "prebuild": "node scripts/sync-content.mjs",
