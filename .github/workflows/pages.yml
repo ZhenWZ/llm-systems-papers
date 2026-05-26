@@ -1,5 +1,8 @@
 name: Deploy dashboard to GitHub Pages
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -40,11 +43,6 @@ jobs:
       - name: Build
         working-directory: web
         run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
