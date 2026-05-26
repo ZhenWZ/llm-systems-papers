@@ -44,10 +44,23 @@ jobs:
         working-directory: web
         run: npm run build
 
+      - name: Archive Pages artifact
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory web/dist \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.0
+        uses: actions/upload-artifact@v4.6.2
         with:
-          path: web/dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     environment:
