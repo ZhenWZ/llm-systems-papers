@@ -17,6 +17,25 @@ papers:
       - diffusion language model
       - drafter
       - SGLang
+  - id: skillopt-2026
+    title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
+    year: 2026
+    priority: P0
+    category: "Agent Skill Optimization & Procedural Memory"
+    phase: agent-adaptation
+    links:
+      arxiv: "https://arxiv.org/abs/2605.23904"
+      project: "https://microsoft.github.io/SkillOpt/"
+      code: "https://github.com/microsoft/SkillOpt"
+      hugging_face: "https://huggingface.co/papers/2605.23904"
+    note: "papers/2026-skillopt-agent-skills.md"
+    tags:
+      - agent skills
+      - text-space optimization
+      - procedural memory
+      - validation gate
+      - Codex
+      - Claude Code
   - id: coda-2026
     title: "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs"
     year: 2026
