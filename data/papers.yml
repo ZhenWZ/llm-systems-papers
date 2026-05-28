@@ -33,6 +33,25 @@ papers:
       - epilogue fusion
       - CuTeDSL
       - training kernels
+  - id: skillopt-2026
+    title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
+    year: 2026
+    priority: P1
+    category: "Agent Runtime & Skill Optimization"
+    phase: agent-adaptation
+    links:
+      project: "https://microsoft.github.io/SkillOpt/"
+      arxiv: "https://arxiv.org/abs/2605.23904"
+      code: "https://github.com/microsoft/SkillOpt"
+      hugging_face: "https://huggingface.co/papers/2605.23904"
+    note: "papers/2026-skillopt-agent-skills.md"
+    tags:
+      - agent skills
+      - text-space optimization
+      - validation gate
+      - procedural memory
+      - Codex
+      - Claude Code
   - id: stem-2026
     title: "Stem: Rethinking Causal Information Flow in Sparse Attention"
     year: 2026
