@@ -20,7 +20,7 @@ npm run dev
 
 构建时 `web/scripts/sync-content.mjs` 会把 `data/papers.yml` 和 `papers/*.md` 同步到静态资源目录。论文元数据仍维护在 `data/papers.yml`，论文详情仍以 Markdown 笔记为主。
 
-部署说明：GitHub Pages 当前从 `gh-pages` 分支发布；`main` 分支上的 Actions workflow 只负责校验和构建，避免依赖 `GITHUB_TOKEN` 执行 Pages deployment。
+部署说明：GitHub Pages 当前从 `gh-pages` 分支发布；`main`/`master` 分支 push 后，Actions workflow 会校验笔记、构建 `web/dist`，并把静态产物推送到 `gh-pages` 分支根目录。
 
 ## 分类导航
 
