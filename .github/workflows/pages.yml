@@ -1,20 +1,21 @@
-name: Validate dashboard
+name: Deploy dashboard to GitHub Pages
 
 on:
   push:
     branches:
       - main
+      - master
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: dashboard-validation
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,3 +43,32 @@ jobs:
       - name: Build
         working-directory: web
         run: npm run build
+
+      - name: Deploy to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin gh-pages:refs/remotes/origin/gh-pages --depth=1
+
+          deploy_dir="$(mktemp -d)"
+          trap 'git worktree remove --force "$deploy_dir" >/dev/null 2>&1 || true' EXIT
+
+          git worktree add --detach "$deploy_dir" origin/gh-pages
+          find "$deploy_dir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+
+          cp -a web/dist/. "$deploy_dir"/
+          touch "$deploy_dir/.nojekyll"
+
+          git -C "$deploy_dir" add -A
+
+          if git -C "$deploy_dir" diff --cached --quiet; then
+            echo "No GitHub Pages changes to deploy."
+          else
+            git -C "$deploy_dir" commit -m "Deploy dashboard to GitHub Pages"
+            git -C "$deploy_dir" push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
+          fi
