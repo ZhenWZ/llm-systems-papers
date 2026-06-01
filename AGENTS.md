@@ -61,6 +61,8 @@ Current categories:
 
 - `Kernel & Operator Systems`
 - `Long-Context Attention & KV Cache`
+- `Inference Serving & Speculative Decoding`
+- `Agent Skill Optimization & Procedural Memory`
 
 ## Priority Convention
 
