@@ -68,6 +68,22 @@ papers:
       - causal information flow
       - prefill
       - block sparse kernel
+  - id: sparda-2026
+    title: "SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference"
+    year: 2026
+    priority: P0
+    category: "Long-Context Attention & KV Cache"
+    phase: inference-decode
+    links:
+      arxiv: "https://arxiv.org/abs/2606.04511"
+      code: "https://github.com/NVlabs/SparDA"
+    note: "papers/2026-sparda-decoupled-sparse-attention.md"
+    tags:
+      - sparse attention
+      - KV cache offloading
+      - decoupled selection
+      - lookahead prefetch
+      - decode throughput
   - id: sals-2025
     title: "SALS: Sparse Attention in Latent Space for KV Cache Compression"
     year: 2025
