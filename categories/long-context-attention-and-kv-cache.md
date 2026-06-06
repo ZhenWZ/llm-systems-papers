@@ -7,6 +7,7 @@
 | 优先级 | 论文 | 阶段 | 核心问题 | 系统启发 | 笔记 |
 | --- | --- | --- | --- | --- | --- |
 | P0 | Stem: Rethinking Causal Information Flow in Sparse Attention | prefill | uniform top-k sparse attention 忽略 causal information flow，容易剪掉早期关键 token | sparse budget 应随 token position decay，selection metric 应引入 value/output awareness | [notes](../papers/2026-stem-sparse-attention.md) |
+| P0 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | decode | KV cache offload 的 PCIe 传输无法与计算 overlap，且 sparse selection 绑定 query、O(T²) 开销大 | 用 Forecast projection 把 selection 与 query 解耦并提前一层，overlap CPU→GPU prefetch；GQA 下每组一个 Forecast head 降 selection 成本 | [notes](../papers/2026-sparda-decoupled-sparse-attention.md) |
 | P1 | SALS: Sparse Attention in Latent Space for KV Cache Compression | decode | KV cache 低秩压缩受 RoPE 和 full reconstruction overhead 制约 | 在 latent space 做 token selection，只重建重要 token，把 low-rank compression 与 sparse attention 结合 | [notes](../papers/2025-sals-latent-kv-cache.md) |
 
 ## 阅读重点
