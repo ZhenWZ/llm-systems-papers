@@ -36,6 +36,26 @@ papers:
       - validation gate
       - Codex
       - Claude Code
+  - id: vision-banana-2026
+    title: "Image Generators are Generalist Vision Learners"
+    year: 2026
+    priority: P1
+    category: "Vision Generation & Understanding Systems"
+    phase: multimodal-vision
+    links:
+      project: "https://vision-banana.github.io/"
+      arxiv: "https://arxiv.org/abs/2604.20329"
+      hugging_face: "https://huggingface.co/papers/2604.20329"
+    note: "papers/2026-vision-banana-generalist-vision.md"
+    tags:
+      - image generation
+      - vision understanding
+      - generative pretraining
+      - instruction tuning
+      - dense prediction
+      - segmentation
+      - metric depth
+      - surface normal
   - id: coda-2026
     title: "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs"
     year: 2026
