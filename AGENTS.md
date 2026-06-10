@@ -63,6 +63,7 @@ Current categories:
 - `Long-Context Attention & KV Cache`
 - `Inference Serving & Speculative Decoding`
 - `Agent Skill Optimization & Procedural Memory`
+- `Vision Generation & Understanding Systems`
 
 ## Priority Convention
 
