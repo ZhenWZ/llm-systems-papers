@@ -1,6 +1,6 @@
 # LLM Systems Papers
 
-面向 LLM systems 的论文库。当前收录 7 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
+面向 LLM systems 的论文库。当前收录 8 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
 
 ## Frontend Dashboard
 
@@ -27,7 +27,7 @@ npm run dev
 | 系统层分类 | 关注问题 | 论文 |
 | --- | --- | --- |
 | [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、text-space optimization、validation gate、execution harness integration | SkillOpt |
-| [Inference Serving & Speculative Decoding](categories/inference-serving-and-speculative-decoding.md) | speculative decoding、decode latency、drafter/verifier、serving runtime integration | DFlash |
+| [Inference Serving & Speculative Decoding](categories/inference-serving-and-speculative-decoding.md) | speculative decoding、decode latency、drafter/verifier、serving runtime integration | DFlash, SSD |
 | [Kernel & Operator Systems](categories/kernel-and-operator-systems.md) | GEMM epilogue fusion、算子重写、训练 kernel authoring | CODA |
 | [Long-Context Attention & KV Cache](categories/long-context-attention-and-kv-cache.md) | sparse attention、prefill latency、KV cache compression、decode throughput | Stem, SparDA, SALS |
 | [Vision Generation & Understanding Systems](categories/vision-generation-and-understanding-systems.md) | image generation pretraining、dense prediction as RGB image、multimodal vision interface、output decoding | Vision Banana |
@@ -37,6 +37,7 @@ npm run dev
 | 优先级 | 论文 | 分类 | 为什么先读 | 链接 | 笔记 |
 | --- | --- | --- | --- | --- | --- |
 | P0 | DFlash: An Efficient Speculative Decoding Framework using Diffusion Language Models | Inference Serving & Speculative Decoding | 直接面向 decode latency，结合 diffusion drafter、acceptance length 和 SGLang backend，适合作为 serving-side speculative decoding 复现目标 | [project](https://z-lab.ai/projects/dflash/), [arXiv](https://arxiv.org/abs/2602.06036), [code](https://github.com/z-lab/dflash), [models](https://huggingface.co/collections/z-lab/dflash) | [notes](papers/2026-dflash-speculative-decoding.md) |
+| P0 | Speculative Speculative Decoding | Inference Serving & Speculative Decoding | 继续优化 ordinary speculative decoding 的 draft/verify pipeline，用独立 draft GPU、Saguaro cache 和 fallback 隐藏 drafting overhead | [arXiv](https://arxiv.org/abs/2603.03251), [code](https://github.com/tanishqkumar/ssd), [HF Papers](https://huggingface.co/papers/2603.03251) | [notes](papers/2026-speculative-speculative-decoding.md) |
 | P0 | SkillOpt: Executive Strategy for Self-Evolving Agent Skills | Agent Skill Optimization & Procedural Memory | 把 agent skill 当成可训练外部状态，直接覆盖 Codex / Claude Code 风格执行环境，适合做 agent skill 优化和验证门控的复现目标 | [arXiv](https://arxiv.org/abs/2605.23904), [project](https://microsoft.github.io/SkillOpt/), [code](https://github.com/microsoft/SkillOpt), [HF Papers](https://huggingface.co/papers/2605.23904) | [notes](papers/2026-skillopt-agent-skills.md) |
 | P0 | Stem: Rethinking Causal Information Flow in Sparse Attention | Long-Context Attention & KV Cache | 有明确 kernel 链接，直接面向 long-context prefill sparse attention，工程可复现性最高 | [arXiv](https://arxiv.org/abs/2603.06274), [Stem kernel](https://github.com/Tencent/AngelSlim/blob/main/angelslim/compressor/sparsity/stem/ops/stem_kernel.py), [Block-Sparse-Attention](https://github.com/mit-han-lab/Block-Sparse-Attention) | [notes](papers/2026-stem-sparse-attention.md) |
 | P0 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | Long-Context Attention & KV Cache | 把 sparse block selection 从 attention query 解耦，用 Forecast projection 做 one-layer lookahead，隐藏 KV cache offload 的 PCIe 传输，直接面向 decode 阶段 offloading 瓶颈且有 NVIDIA 官方代码 | [arXiv](https://arxiv.org/abs/2606.04511), [code](https://github.com/NVlabs/SparDA) | [notes](papers/2026-sparda-decoupled-sparse-attention.md) |
@@ -49,6 +50,7 @@ npm run dev
 | 年份 | 论文 | 主题标签 | 阶段 | 代码状态 |
 | --- | --- | --- | --- | --- |
 | 2026 | DFlash: An Efficient Speculative Decoding Framework using Diffusion Language Models | speculative decoding, block diffusion, diffusion drafter, SGLang | inference decode | public repo + models |
+| 2026 | Speculative Speculative Decoding | speculative decoding, async drafting, Saguaro, speculation cache, H100 | inference decode | public repo (custom inference engine) |
 | 2026 | SkillOpt: Executive Strategy for Self-Evolving Agent Skills | agent skills, text-space optimization, validation gate, procedural memory, Codex, Claude Code | agent adaptation | public repo |
 | 2026 | Image Generators are Generalist Vision Learners | image generation, vision understanding, dense prediction, segmentation, depth | multimodal vision | project page + arXiv; code/weights not public |
 | 2026 | CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs | GEMM, epilogue fusion, CuTeDSL, training kernels | training | public repo |

@@ -17,6 +17,25 @@ papers:
       - diffusion language model
       - drafter
       - SGLang
+  - id: speculative-speculative-decoding-2026
+    title: "Speculative Speculative Decoding"
+    year: 2026
+    priority: P0
+    category: "Inference Serving & Speculative Decoding"
+    phase: inference-decode
+    links:
+      arxiv: "https://arxiv.org/abs/2603.03251"
+      code: "https://github.com/tanishqkumar/ssd"
+      hugging_face: "https://huggingface.co/papers/2603.03251"
+    note: "papers/2026-speculative-speculative-decoding.md"
+    tags:
+      - speculative decoding
+      - async drafting
+      - Saguaro
+      - speculation cache
+      - verifier
+      - inference serving
+      - H100
   - id: skillopt-2026
     title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
     year: 2026
