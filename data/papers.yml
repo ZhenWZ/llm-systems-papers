@@ -93,6 +93,27 @@ papers:
       - segmentation
       - metric depth
       - surface normal
+  - id: cuda-agent-2026
+    title: "CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation"
+    year: 2026
+    priority: P0
+    category: "Kernel & Operator Systems"
+    phase: kernel-generation
+    links:
+      hugging_face: "https://huggingface.co/papers/2602.24286"
+      arxiv: "https://arxiv.org/abs/2602.24286"
+      project: "https://cuda-agent.github.io/"
+      code: "https://github.com/BytedTsinghua-SIA/CUDA-Agent"
+      dataset: "https://huggingface.co/datasets/BytedTsinghua-SIA/CUDA-Agent-Ops-6K"
+    note: "papers/2026-cuda-agent-kernel-generation.md"
+    tags:
+      - CUDA kernel generation
+      - agentic RL
+      - KernelBench
+      - torch.compile
+      - profiling
+      - reward shaping
+      - CUDA-Agent-Ops-6K
   - id: coda-2026
     title: "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs"
     year: 2026
