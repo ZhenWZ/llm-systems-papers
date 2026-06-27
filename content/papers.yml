@@ -55,6 +55,24 @@ papers:
       - validation gate
       - Codex
       - Claude Code
+  - id: self-harness-2026
+    title: "Self-Harness: Harnesses That Improve Themselves"
+    year: 2026
+    priority: P1
+    category: "Agent Skill Optimization & Procedural Memory"
+    phase: agent-adaptation
+    links:
+      arxiv: "https://arxiv.org/abs/2606.09498"
+      blog: "https://explainx.ai/blog/self-harness-agents-improve-themselves-arxiv-2026"
+    note: "papers/2026-self-harness-agent-harnesses.md"
+    tags:
+      - agent harness
+      - self-improvement
+      - weakness mining
+      - proposal validation
+      - regression testing
+      - Terminal-Bench
+      - DeepAgent
   - id: vision-banana-2026
     title: "Image Generators are Generalist Vision Learners"
     year: 2026
