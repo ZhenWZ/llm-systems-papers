@@ -123,6 +123,25 @@ papers:
       - decoupled selection
       - lookahead prefetch
       - decode throughput
+  - id: vericache-2026
+    title: "VeriCache: Turning Lossy KV Cache into Lossless LLM Inference"
+    year: 2026
+    priority: P0
+    category: "Long-Context Attention & KV Cache"
+    phase: inference-decode
+    links:
+      arxiv: "https://arxiv.org/abs/2605.17613"
+      hugging_face: "https://huggingface.co/papers/2605.17613"
+    note: "papers/2026-vericache-lossless-kv-cache.md"
+    tags:
+      - KV cache compression
+      - lossless inference
+      - speculative verification
+      - remote prefix caching
+      - vLLM
+      - LMCache
+      - token dropping
+      - quantization
   - id: sals-2025
     title: "SALS: Sparse Attention in Latent Space for KV Cache Compression"
     year: 2025
