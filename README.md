@@ -1,6 +1,6 @@
 # LLM Systems Papers
 
-面向 LLM systems 的论文库。当前收录 9 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
+面向 LLM systems 的论文库。当前收录 10 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
 
 ## Frontend Dashboard
 
@@ -26,7 +26,7 @@ npm run dev
 
 | 系统层分类 | 关注问题 | 论文 |
 | --- | --- | --- |
-| [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、text-space optimization、validation gate、execution harness integration | SkillOpt |
+| [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、text-space optimization、validation gate、execution harness integration | SkillOpt, Self-Harness |
 | [Inference Serving & Speculative Decoding](categories/inference-serving-and-speculative-decoding.md) | speculative decoding、decode latency、drafter/verifier、serving runtime integration | DFlash, SSD |
 | [Kernel & Operator Systems](categories/kernel-and-operator-systems.md) | GEMM epilogue fusion、算子重写、训练 kernel authoring | CODA |
 | [Long-Context Attention & KV Cache](categories/long-context-attention-and-kv-cache.md) | sparse attention、prefill latency、KV cache compression、decode throughput | Stem, SparDA, VeriCache, SALS |
@@ -42,6 +42,7 @@ npm run dev
 | P0 | Stem: Rethinking Causal Information Flow in Sparse Attention | Long-Context Attention & KV Cache | 有明确 kernel 链接，直接面向 long-context prefill sparse attention，工程可复现性最高 | [arXiv](https://arxiv.org/abs/2603.06274), [Stem kernel](https://github.com/Tencent/AngelSlim/blob/main/angelslim/compressor/sparsity/stem/ops/stem_kernel.py), [Block-Sparse-Attention](https://github.com/mit-han-lab/Block-Sparse-Attention) | [notes](papers/2026-stem-sparse-attention.md) |
 | P0 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | Long-Context Attention & KV Cache | 把 sparse block selection 从 attention query 解耦，用 Forecast projection 做 one-layer lookahead，隐藏 KV cache offload 的 PCIe 传输，直接面向 decode 阶段 offloading 瓶颈且有 NVIDIA 官方代码 | [arXiv](https://arxiv.org/abs/2606.04511), [code](https://github.com/NVlabs/SparDA) | [notes](papers/2026-sparda-decoupled-sparse-attention.md) |
 | P0 | VeriCache: Turning Lossy KV Cache into Lossless LLM Inference | Long-Context Attention & KV Cache | 把 compressed KV decoding 作为 draft path、full KV 作为 verification path，直接处理 KV compression 的 throughput/accuracy dichotomy | [arXiv](https://arxiv.org/abs/2605.17613), [HF Papers](https://huggingface.co/papers/2605.17613) | [notes](papers/2026-vericache-lossless-kv-cache.md) |
+| P1 | Self-Harness: Harnesses That Improve Themselves | Agent Skill Optimization & Procedural Memory | 把 agent harness edit 变成 evidence-driven、regression-gated state transition，适合指导 Codex / Claude Code 类 execution harness 的自动优化 | [arXiv](https://arxiv.org/abs/2606.09498), [blog](https://explainx.ai/blog/self-harness-agents-improve-themselves-arxiv-2026) | [notes](papers/2026-self-harness-agent-harnesses.md) |
 | P1 | CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs | Kernel & Operator Systems | 代表训练侧 kernel abstraction 方向，把 Transformer block 重写成 GEMM-plus-epilogue programs | [HF Papers](https://huggingface.co/papers/2605.19269), [arXiv](https://arxiv.org/abs/2605.19269), [code](https://github.com/HanGuo97/coda-kernels) | [notes](papers/2026-coda-gemm-epilogue.md) |
 | P1 | Image Generators are Generalist Vision Learners | Vision Generation & Understanding Systems | 把 dense vision tasks 统一成 RGB image generation，为 multimodal systems 提供 generation/perception 共用接口的参考 | [project](https://vision-banana.github.io/), [arXiv](https://arxiv.org/abs/2604.20329), [HF Papers](https://huggingface.co/papers/2604.20329) | [notes](papers/2026-vision-banana-generalist-vision.md) |
 | P1 | SALS: Sparse Attention in Latent Space for KV Cache Compression | Long-Context Attention & KV Cache | 结合 low-rank KV cache compression 和 sparse token selection，适合跟踪 decode 阶段 memory bandwidth 优化 | [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2025/hash/00a0ebcad584c59dbc439c2af8793638-Abstract-Conference.html), [arXiv](https://arxiv.org/abs/2510.24273) | [notes](papers/2025-sals-latent-kv-cache.md) |
@@ -53,6 +54,7 @@ npm run dev
 | 2026 | DFlash: An Efficient Speculative Decoding Framework using Diffusion Language Models | speculative decoding, block diffusion, diffusion drafter, SGLang | inference decode | public repo + models |
 | 2026 | Speculative Speculative Decoding | speculative decoding, async drafting, Saguaro, speculation cache, H100 | inference decode | public repo (custom inference engine) |
 | 2026 | SkillOpt: Executive Strategy for Self-Evolving Agent Skills | agent skills, text-space optimization, validation gate, procedural memory, Codex, Claude Code | agent adaptation | public repo |
+| 2026 | Self-Harness: Harnesses That Improve Themselves | agent harness, self-improvement, weakness mining, regression testing, Terminal-Bench | agent adaptation | paper + blog; no official code found |
 | 2026 | Image Generators are Generalist Vision Learners | image generation, vision understanding, dense prediction, segmentation, depth | multimodal vision | project page + arXiv; code/weights not public |
 | 2026 | CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs | GEMM, epilogue fusion, CuTeDSL, training kernels | training | public repo |
 | 2026 | Stem: Rethinking Causal Information Flow in Sparse Attention | sparse attention, prefill, block sparse kernel, long context | inference prefill | linked implementation |
