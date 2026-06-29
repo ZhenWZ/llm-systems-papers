@@ -312,45 +312,47 @@ function DetailPanel({ markdown, onExpand, onResizeStart, paper, status }) {
       >
         <GripVertical size={16} />
       </button>
-      {paper ? (
-        <>
-          <div className="detail-header">
-            <div>
-              <h2>{paper.title}</h2>
-              <div className="detail-meta">
-                <PriorityChip priority={paper.priority} />
-                <span>{paper.year}</span>
-                <span>{paper.category}</span>
+      <div className="detail-scroll">
+        {paper ? (
+          <>
+            <div className="detail-header">
+              <div>
+                <h2>{paper.title}</h2>
+                <div className="detail-meta">
+                  <PriorityChip priority={paper.priority} />
+                  <span>{paper.year}</span>
+                  <span>{paper.category}</span>
+                </div>
+              </div>
+              <div className="detail-actions">
+                <button className="icon-link" onClick={onExpand} title="Open as page" type="button">
+                  <Maximize2 size={18} />
+                </button>
+                <a className="icon-link" href={`${BASE_URL}content/${paper.note}`} rel="noreferrer" target="_blank" title="Markdown note">
+                  <FileText size={18} />
+                </a>
               </div>
             </div>
-            <div className="detail-actions">
-              <button className="icon-link" onClick={onExpand} title="Open as page" type="button">
-                <Maximize2 size={18} />
-              </button>
-              <a className="icon-link" href={`${BASE_URL}content/${paper.note}`} rel="noreferrer" target="_blank" title="Markdown note">
-                <FileText size={18} />
+            <div className="detail-links">
+              <ExternalLinks links={paper.links} />
+              <a className="copy-link" href={`?paper=${paper.id}&view=table`}>
+                <LinkIcon size={15} />
+                state link
               </a>
             </div>
+            <div className="markdown-body">
+              {status === 'loading' && <p className="muted">Loading Markdown note...</p>}
+              {status === 'error' && <p className="muted">Markdown note failed to load.</p>}
+              {status === 'ready' && <div dangerouslySetInnerHTML={{ __html: html }} />}
+            </div>
+          </>
+        ) : (
+          <div className="empty-detail">
+            <FileText size={24} />
+            <p>Select a paper to read its Markdown note.</p>
           </div>
-          <div className="detail-links">
-            <ExternalLinks links={paper.links} />
-            <a className="copy-link" href={`?paper=${paper.id}&view=table`}>
-              <LinkIcon size={15} />
-              state link
-            </a>
-          </div>
-          <div className="markdown-body">
-            {status === 'loading' && <p className="muted">Loading Markdown note...</p>}
-            {status === 'error' && <p className="muted">Markdown note failed to load.</p>}
-            {status === 'ready' && <div dangerouslySetInnerHTML={{ __html: html }} />}
-          </div>
-        </>
-      ) : (
-        <div className="empty-detail">
-          <FileText size={24} />
-          <p>Select a paper to read its Markdown note.</p>
-        </div>
-      )}
+        )}
+      </div>
     </aside>
   );
 }

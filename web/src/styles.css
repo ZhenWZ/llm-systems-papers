@@ -610,8 +610,13 @@ td:nth-child(7) {
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow: auto;
+  overflow: visible;
   background: var(--surface);
+}
+
+.detail-scroll {
+  height: 100%;
+  overflow: auto;
   padding: 26px 24px 40px;
 }
 
@@ -627,6 +632,8 @@ td:nth-child(7) {
   color: #9aa3b2;
   cursor: col-resize;
   padding: 0;
+  touch-action: none;
+  z-index: 2;
 }
 
 .detail-resizer::before {
@@ -878,7 +885,13 @@ td:nth-child(7) {
     grid-column: 2;
     position: static;
     height: auto;
+    overflow: visible;
     border-top: 1px solid var(--border);
+  }
+
+  .detail-scroll {
+    height: auto;
+    overflow: visible;
   }
 
   .detail-resizer {
@@ -931,7 +944,7 @@ td:nth-child(7) {
   }
 
   .main-panel,
-  .detail-panel {
+  .detail-scroll {
     padding: 22px 16px;
   }
 
