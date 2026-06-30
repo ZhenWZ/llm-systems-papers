@@ -114,6 +114,27 @@ papers:
       - profiling
       - reward shaping
       - CUDA-Agent-Ops-6K
+  - id: kernelevolve-2026
+    title: "KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta"
+    year: 2026
+    priority: P0
+    category: "Kernel & Operator Systems"
+    phase: kernel-generation
+    links:
+      arxiv: "https://arxiv.org/abs/2512.23236"
+      meta_engineering: "https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/"
+      isca: "https://iscaconf.org/isca2026/"
+    note: "papers/2026-kernelevolve-agentic-kernel-coding.md"
+    tags:
+      - agentic kernel coding
+      - heterogeneous accelerators
+      - KernelBench
+      - MTIA
+      - Triton
+      - CuTe DSL
+      - retrieval-augmented prompting
+      - tree search
+      - production kernels
   - id: coda-2026
     title: "CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs"
     year: 2026

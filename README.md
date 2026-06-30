@@ -1,6 +1,6 @@
 # LLM Systems Papers
 
-面向 LLM systems 的论文库。当前收录 11 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
+面向 LLM systems 的论文库。当前收录 12 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
 
 ## Frontend Dashboard
 
@@ -28,7 +28,7 @@ npm run dev
 | --- | --- | --- |
 | [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、text-space optimization、validation gate、execution harness integration | SkillOpt, Self-Harness |
 | [Inference Serving & Speculative Decoding](categories/inference-serving-and-speculative-decoding.md) | speculative decoding、decode latency、drafter/verifier、serving runtime integration | DFlash, SSD |
-| [Kernel & Operator Systems](categories/kernel-and-operator-systems.md) | CUDA kernel generation、agentic RL、GEMM epilogue fusion、算子重写、训练 kernel authoring | CUDA Agent, CODA |
+| [Kernel & Operator Systems](categories/kernel-and-operator-systems.md) | CUDA kernel generation、agentic RL、heterogeneous accelerators、GEMM epilogue fusion、算子重写、训练 kernel authoring | CUDA Agent, KernelEvolve, CODA |
 | [Long-Context Attention & KV Cache](categories/long-context-attention-and-kv-cache.md) | sparse attention、prefill latency、KV cache compression、decode throughput | Stem, SparDA, VeriCache, SALS |
 | [Vision Generation & Understanding Systems](categories/vision-generation-and-understanding-systems.md) | image generation pretraining、dense prediction as RGB image、multimodal vision interface、output decoding | Vision Banana |
 
@@ -43,6 +43,7 @@ npm run dev
 | P0 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | Long-Context Attention & KV Cache | 把 sparse block selection 从 attention query 解耦，用 Forecast projection 做 one-layer lookahead，隐藏 KV cache offload 的 PCIe 传输，直接面向 decode 阶段 offloading 瓶颈且有 NVIDIA 官方代码 | [arXiv](https://arxiv.org/abs/2606.04511), [code](https://github.com/NVlabs/SparDA) | [notes](papers/2026-sparda-decoupled-sparse-attention.md) |
 | P0 | VeriCache: Turning Lossy KV Cache into Lossless LLM Inference | Long-Context Attention & KV Cache | 把 compressed KV decoding 作为 draft path、full KV 作为 verification path，直接处理 KV compression 的 throughput/accuracy dichotomy | [arXiv](https://arxiv.org/abs/2605.17613), [HF Papers](https://huggingface.co/papers/2605.17613) | [notes](papers/2026-vericache-lossless-kv-cache.md) |
 | P0 | CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation | Kernel & Operator Systems | 官方 repo 和 6K dataset 已发布，直接覆盖 CUDA kernel generation、profiling、verification、reward shaping 和 agentic RL，适合作为 kernel generation agent 的重点复现目标 | [HF Papers](https://huggingface.co/papers/2602.24286), [arXiv](https://arxiv.org/abs/2602.24286), [project](https://cuda-agent.github.io/), [code](https://github.com/BytedTsinghua-SIA/CUDA-Agent), [dataset](https://huggingface.co/datasets/BytedTsinghua-SIA/CUDA-Agent-Ops-6K) | [notes](papers/2026-cuda-agent-kernel-generation.md) |
+| P0 | KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta | Kernel & Operator Systems | Meta production/ISCA 2026 系统，覆盖 heterogeneous accelerator kernel search、RAG hardware knowledge、profiling diagnostics 和 production validation，是 kernel generation agent 生产化的关键案例 | [arXiv](https://arxiv.org/abs/2512.23236), [Meta Engineering](https://engineering.fb.com/2026/04/02/developer-tools/kernelevolve-how-metas-ranking-engineer-agent-optimizes-ai-infrastructure/), [ISCA 2026](https://iscaconf.org/isca2026/) | [notes](papers/2026-kernelevolve-agentic-kernel-coding.md) |
 | P1 | Self-Harness: Harnesses That Improve Themselves | Agent Skill Optimization & Procedural Memory | 把 agent harness edit 变成 evidence-driven、regression-gated state transition，适合指导 Codex / Claude Code 类 execution harness 的自动优化 | [arXiv](https://arxiv.org/abs/2606.09498), [blog](https://explainx.ai/blog/self-harness-agents-improve-themselves-arxiv-2026) | [notes](papers/2026-self-harness-agent-harnesses.md) |
 | P1 | CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs | Kernel & Operator Systems | 代表训练侧 kernel abstraction 方向，把 Transformer block 重写成 GEMM-plus-epilogue programs | [HF Papers](https://huggingface.co/papers/2605.19269), [arXiv](https://arxiv.org/abs/2605.19269), [code](https://github.com/HanGuo97/coda-kernels) | [notes](papers/2026-coda-gemm-epilogue.md) |
 | P1 | Image Generators are Generalist Vision Learners | Vision Generation & Understanding Systems | 把 dense vision tasks 统一成 RGB image generation，为 multimodal systems 提供 generation/perception 共用接口的参考 | [project](https://vision-banana.github.io/), [arXiv](https://arxiv.org/abs/2604.20329), [HF Papers](https://huggingface.co/papers/2604.20329) | [notes](papers/2026-vision-banana-generalist-vision.md) |
@@ -58,6 +59,7 @@ npm run dev
 | 2026 | Self-Harness: Harnesses That Improve Themselves | agent harness, self-improvement, weakness mining, regression testing, Terminal-Bench | agent adaptation | paper + blog; no official code found |
 | 2026 | Image Generators are Generalist Vision Learners | image generation, vision understanding, dense prediction, segmentation, depth | multimodal vision | project page + arXiv; code/weights not public |
 | 2026 | CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation | CUDA kernel generation, agentic RL, KernelBench, profiling, reward shaping | kernel generation | public repo + dataset |
+| 2026 | KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta | agentic kernel coding, heterogeneous accelerators, MTIA, KernelBench, retrieval-augmented prompting | kernel generation | paper + engineering article; no official code found |
 | 2026 | CODA: Rewriting Transformer Blocks as GEMM-Epilogue Programs | GEMM, epilogue fusion, CuTeDSL, training kernels | training | public repo |
 | 2026 | Stem: Rethinking Causal Information Flow in Sparse Attention | sparse attention, prefill, block sparse kernel, long context | inference prefill | linked implementation |
 | 2026 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | sparse attention, KV cache offloading, decoupled selection, lookahead prefetch | inference decode | public repo (NVlabs, Apache-2.0) |
