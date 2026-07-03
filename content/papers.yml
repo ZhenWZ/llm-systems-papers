@@ -1,4 +1,24 @@
 papers:
+  - id: adajepa-2026
+    title: "AdaJEPA: An Adaptive Latent World Model"
+    year: 2026
+    priority: P1
+    category: "World Models & Test-Time Adaptation"
+    phase: test-time-adaptation
+    links:
+      arxiv: "https://arxiv.org/abs/2606.32026"
+      hugging_face: "https://huggingface.co/papers/2606.32026"
+      lab: "https://agenticlearning.ai/"
+    note: "papers/2026-adajepa-adaptive-latent-world-model.md"
+    tags:
+      - JEPA
+      - latent world model
+      - test-time adaptation
+      - model predictive control
+      - closed-loop planning
+      - self-supervised prediction
+      - goal-reaching
+      - DINO-WM
   - id: dflash-2026
     title: "DFlash: An Efficient Speculative Decoding Framework using Diffusion Language Models"
     year: 2026
