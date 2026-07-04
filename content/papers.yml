@@ -37,6 +37,29 @@ papers:
       - diffusion language model
       - drafter
       - SGLang
+  - id: elf-2026
+    title: "ELF: Embedded Language Flows"
+    year: 2026
+    priority: P1
+    category: "Diffusion Language Models & Non-Autoregressive Generation"
+    phase: diffusion-generation
+    links:
+      arxiv: "https://arxiv.org/abs/2605.10938"
+      code: "https://github.com/lillian039/ELF"
+      hugging_face: "https://huggingface.co/papers/2605.10938"
+      models: "https://huggingface.co/embedded-language-flows"
+    note: "papers/2026-elf-embedded-language-flows.md"
+    tags:
+      - diffusion language model
+      - continuous embedding space
+      - Flow Matching
+      - non-autoregressive generation
+      - classifier-free guidance
+      - OpenWebText
+      - WMT14
+      - XSum
+      - JAX
+      - TPU
   - id: speculative-speculative-decoding-2026
     title: "Speculative Speculative Decoding"
     year: 2026
