@@ -28,7 +28,7 @@ const PRIORITY_ORDER = { P0: 0, P1: 1, P2: 2 };
 const DETAIL_WIDTH_STORAGE_KEY = 'llm-systems-papers-detail-width';
 const SIDEBAR_STORAGE_KEY = 'llm-systems-papers-sidebar-collapsed';
 const DETAIL_WIDTH_MIN = 320;
-const DETAIL_WIDTH_MAX = 620;
+const DETAIL_WIDTH_MAX_RATIO = 2 / 3;
 const SYSTEM_NAV = [
   { id: 'all', label: 'All Papers', icon: BookOpen },
   { id: 'categories', label: 'Categories', icon: Layers3 },
@@ -63,9 +63,13 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
+function getDetailWidthMax() {
+  return Math.max(DETAIL_WIDTH_MIN, Math.round(window.innerWidth * DETAIL_WIDTH_MAX_RATIO));
+}
+
 function getStoredDetailWidth() {
   const parsed = Number.parseInt(window.localStorage.getItem(DETAIL_WIDTH_STORAGE_KEY) ?? '', 10);
-  return Number.isFinite(parsed) ? clamp(parsed, DETAIL_WIDTH_MIN, DETAIL_WIDTH_MAX) : 380;
+  return Number.isFinite(parsed) ? clamp(parsed, DETAIL_WIDTH_MIN, getDetailWidthMax()) : 380;
 }
 
 function getStoredSidebarCollapsed() {
@@ -522,6 +526,15 @@ export default function App() {
   }, [detailWidth]);
 
   useEffect(() => {
+    function handleResize() {
+      setDetailWidth((width) => clamp(width, DETAIL_WIDTH_MIN, getDetailWidthMax()));
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(sidebarCollapsed));
   }, [sidebarCollapsed]);
 
@@ -570,8 +583,7 @@ export default function App() {
     event.currentTarget.setPointerCapture?.(event.pointerId);
 
     function handlePointerMove(moveEvent) {
-      const maxWidth = Math.min(DETAIL_WIDTH_MAX, Math.round(window.innerWidth * 0.52));
-      setDetailWidth(clamp(window.innerWidth - moveEvent.clientX, DETAIL_WIDTH_MIN, maxWidth));
+      setDetailWidth(clamp(window.innerWidth - moveEvent.clientX, DETAIL_WIDTH_MIN, getDetailWidthMax()));
     }
 
     function handlePointerUp() {
