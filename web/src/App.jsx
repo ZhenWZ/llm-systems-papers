@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import yaml from 'js-yaml';
 import { marked } from 'marked';
+import markedKatex from 'marked-katex-extension';
 import {
   BookOpen,
   ChevronLeft,
@@ -40,6 +41,13 @@ marked.setOptions({
   gfm: true,
   breaks: false,
 });
+
+marked.use(
+  markedKatex({
+    nonStandard: true,
+    throwOnError: false,
+  }),
+);
 
 function getInitialQuery() {
   const params = new URLSearchParams(window.location.search);

@@ -774,6 +774,16 @@ td:nth-child(7) {
   padding: 2px 5px;
 }
 
+.markdown-body .katex {
+  font-size: 1em;
+}
+
+.markdown-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
 .markdown-body pre {
   overflow-x: auto;
   border: 1px solid var(--border);
