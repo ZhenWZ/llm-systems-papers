@@ -98,6 +98,30 @@ papers:
       - validation gate
       - Codex
       - Claude Code
+  - id: automem-2026
+    title: "AutoMem: Automated Learning of Memory as a Cognitive Skill"
+    year: 2026
+    priority: P0
+    category: "Agent Skill Optimization & Procedural Memory"
+    phase: agent-memory
+    links:
+      hugging_face: "https://huggingface.co/papers/2607.01224"
+      arxiv: "https://arxiv.org/abs/2607.01224"
+      project: "https://autolearnmem.github.io/"
+      code: "https://github.com/autoLearnMem/AutoMem"
+    note: "papers/2026-automem-memory-cognitive-skill.md"
+    tags:
+      - agent memory
+      - procedural memory
+      - metamemory
+      - file-system memory
+      - scaffold optimization
+      - memory specialist
+      - LoRA
+      - BALROG
+      - Crafter
+      - MiniHack
+      - NetHack
   - id: self-harness-2026
     title: "Self-Harness: Harnesses That Improve Themselves"
     year: 2026
