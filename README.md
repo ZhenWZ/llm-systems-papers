@@ -1,6 +1,6 @@
 # LLM Systems Papers
 
-面向 LLM systems 的论文库。当前收录 15 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
+面向 LLM systems 的论文库。当前收录 16 篇论文，按系统层能力分类整理，并为每篇论文提供中文笔记。专业术语保留英文，便于后续检索和与原文对照。
 
 ## Frontend Dashboard
 
@@ -26,7 +26,7 @@ npm run dev
 
 | 系统层分类 | 关注问题 | 论文 |
 | --- | --- | --- |
-| [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、agent memory、memory scaffold、validation gate、execution harness integration | SkillOpt, AutoMem, Self-Harness |
+| [Agent Skill Optimization & Procedural Memory](categories/agent-skill-optimization-and-procedural-memory.md) | agent skills、procedural memory、skill evolution、agent memory、memory scaffold、validation gate、execution harness integration | SkillOpt, SkillComposer, AutoMem, Self-Harness |
 | [Diffusion Language Models & Non-Autoregressive Generation](categories/diffusion-language-models-and-non-autoregressive-generation.md) | diffusion language model、continuous embedding space、Flow Matching、non-autoregressive generation、sampling-step efficiency | ELF |
 | [Inference Serving & Speculative Decoding](categories/inference-serving-and-speculative-decoding.md) | speculative decoding、decode latency、drafter/verifier、serving runtime integration | DFlash, SSD |
 | [Kernel & Operator Systems](categories/kernel-and-operator-systems.md) | CUDA kernel generation、agentic RL、heterogeneous accelerators、GEMM epilogue fusion、算子重写、训练 kernel authoring | CUDA Agent, KernelEvolve, CODA |
@@ -41,6 +41,7 @@ npm run dev
 | P0 | DFlash: An Efficient Speculative Decoding Framework using Diffusion Language Models | Inference Serving & Speculative Decoding | 直接面向 decode latency，结合 diffusion drafter、acceptance length 和 SGLang backend，适合作为 serving-side speculative decoding 复现目标 | [project](https://z-lab.ai/projects/dflash/), [arXiv](https://arxiv.org/abs/2602.06036), [code](https://github.com/z-lab/dflash), [models](https://huggingface.co/collections/z-lab/dflash) | [notes](papers/2026-dflash-speculative-decoding.md) |
 | P0 | Speculative Speculative Decoding | Inference Serving & Speculative Decoding | 继续优化 ordinary speculative decoding 的 draft/verify pipeline，用独立 draft GPU、Saguaro cache 和 fallback 隐藏 drafting overhead | [arXiv](https://arxiv.org/abs/2603.03251), [code](https://github.com/tanishqkumar/ssd), [HF Papers](https://huggingface.co/papers/2603.03251) | [notes](papers/2026-speculative-speculative-decoding.md) |
 | P0 | SkillOpt: Executive Strategy for Self-Evolving Agent Skills | Agent Skill Optimization & Procedural Memory | 把 agent skill 当成可训练外部状态，直接覆盖 Codex / Claude Code 风格执行环境，适合做 agent skill 优化和验证门控的复现目标 | [arXiv](https://arxiv.org/abs/2605.23904), [project](https://microsoft.github.io/SkillOpt/), [code](https://github.com/microsoft/SkillOpt), [HF Papers](https://huggingface.co/papers/2605.23904) | [notes](papers/2026-skillopt-agent-skills.md) |
+| P0 | SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization | Agent Skill Optimization & Procedural Memory | 把 skill construction 拆成 create、merge、improve 三个可学习操作，并用 delta pass rate rejection sampling 训练 composer，是 agent skill lifecycle 的核心参考 | [arXiv](https://arxiv.org/abs/2606.06079), [HF Papers](https://huggingface.co/papers/2606.06079) | [notes](papers/2026-skillcomposer-skill-evolution.md) |
 | P0 | AutoMem: Automated Learning of Memory as a Cognitive Skill | Agent Skill Optimization & Procedural Memory | 把 file-system memory operations 提升为 agent action，并用 meta-LLM 两层 loop 同时优化 memory scaffold 和 memory specialist，是 procedural memory 生产化的重要参考 | [HF Papers](https://huggingface.co/papers/2607.01224), [arXiv](https://arxiv.org/abs/2607.01224), [project](https://autolearnmem.github.io/), [code](https://github.com/autoLearnMem/AutoMem) | [notes](papers/2026-automem-memory-cognitive-skill.md) |
 | P0 | Stem: Rethinking Causal Information Flow in Sparse Attention | Long-Context Attention & KV Cache | 有明确 kernel 链接，直接面向 long-context prefill sparse attention，工程可复现性最高 | [arXiv](https://arxiv.org/abs/2603.06274), [Stem kernel](https://github.com/Tencent/AngelSlim/blob/main/angelslim/compressor/sparsity/stem/ops/stem_kernel.py), [Block-Sparse-Attention](https://github.com/mit-han-lab/Block-Sparse-Attention) | [notes](papers/2026-stem-sparse-attention.md) |
 | P0 | SparDA: Sparse Decoupled Attention for Efficient Long-Context LLM Inference | Long-Context Attention & KV Cache | 把 sparse block selection 从 attention query 解耦，用 Forecast projection 做 one-layer lookahead，隐藏 KV cache offload 的 PCIe 传输，直接面向 decode 阶段 offloading 瓶颈且有 NVIDIA 官方代码 | [arXiv](https://arxiv.org/abs/2606.04511), [code](https://github.com/NVlabs/SparDA) | [notes](papers/2026-sparda-decoupled-sparse-attention.md) |
@@ -62,6 +63,7 @@ npm run dev
 | 2026 | ELF: Embedded Language Flows | diffusion language model, continuous embedding space, Flow Matching, CFG, non-autoregressive generation | diffusion generation | public repo + models/data |
 | 2026 | Speculative Speculative Decoding | speculative decoding, async drafting, Saguaro, speculation cache, H100 | inference decode | public repo (custom inference engine) |
 | 2026 | SkillOpt: Executive Strategy for Self-Evolving Agent Skills | agent skills, text-space optimization, validation gate, procedural memory, Codex, Claude Code | agent adaptation | public repo |
+| 2026 | SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization | agent skills, skill evolution, specification, generalization, rejection sampling | agent skill evolution | paper only; no official code found |
 | 2026 | AutoMem: Automated Learning of Memory as a Cognitive Skill | agent memory, procedural memory, metamemory, file-system memory, BALROG | agent memory | public repo + project page |
 | 2026 | Self-Harness: Harnesses That Improve Themselves | agent harness, self-improvement, weakness mining, regression testing, Terminal-Bench | agent adaptation | paper + blog; no official code found |
 | 2026 | Image Generators are Generalist Vision Learners | image generation, vision understanding, dense prediction, segmentation, depth | multimodal vision | project page + arXiv; code/weights not public |

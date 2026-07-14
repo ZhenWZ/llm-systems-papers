@@ -98,6 +98,27 @@ papers:
       - validation gate
       - Codex
       - Claude Code
+  - id: skillcomposer-2026
+    title: "SkillComposer: Learning to Evolve Agent Skills for Specification and Generalization"
+    year: 2026
+    priority: P0
+    category: "Agent Skill Optimization & Procedural Memory"
+    phase: agent-skill-evolution
+    links:
+      arxiv: "https://arxiv.org/abs/2606.06079"
+      hugging_face: "https://huggingface.co/papers/2606.06079"
+    note: "papers/2026-skillcomposer-skill-evolution.md"
+    tags:
+      - agent skills
+      - skill evolution
+      - procedural memory
+      - specification
+      - generalization
+      - rejection sampling
+      - delta pass rate
+      - LiveCodeBench
+      - AppWorld
+      - tau2-Bench
   - id: automem-2026
     title: "AutoMem: Automated Learning of Memory as a Cognitive Skill"
     year: 2026
